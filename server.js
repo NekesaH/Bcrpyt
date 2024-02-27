@@ -16,10 +16,10 @@ app.get('/', (req, res) => {
 
 //START_ASYNC -do not remove notes, place code between correct pair of notes.
 
-bcrypt.hash(myPlaintextPassword, 13, (err, hash) => {
+bcrypt.hash(myPlaintextPassword, 13, saltRounds, (err, hash) => {
     console.log(hash);
     //$2a$12$Y.PHPE15wR25qrrtgGkiYe2sXo98cjuMCG1YwSI5rJW1DSJp0gEYS
-    bcrypt.compare(someOtherPlaintextPassword, hash, (err, res) => {
+    bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
       console.log(res); //true
     });
   });
